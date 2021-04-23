@@ -62,5 +62,9 @@ function FindPrimeMatch(primesList, numToMatch) {
     return null
 }
 
+function buttonClicked() {
+    document.getElementsByClassName("fractionsEqual").item(0).style.visibility = "visible";
+}
+
 
 reduceMasterFunction(initialNumerator, initialDenominator);

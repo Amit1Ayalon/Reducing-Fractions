@@ -1,3 +1,7 @@
+* {
+    user-select: none;
+}
+
 h1 {
     color: blue;
 }
@@ -9,11 +13,66 @@ body {
 }
 
 form {
-    background-color: red;
     width: 50%;
     margin: auto;
 }
 
 label {
     font-size: 20px;
+}
+
+.inputBlock {
+    padding: 35px;
+    padding-top: 0;
+}
+
+input[type="text"] {
+    border: none;
+    outline: none;
+    border-radius: 5px;
+    font-size: 40px;
+    text-align: center;
+    width: 70%;
+    max-width: 250px;
+}
+
+input[type="button"] {
+    border: none;
+    font-size: 20px;
+    padding: 20px;
+    border-radius: 5px;
+    background-color: #4CAF50;
+    outline: none;
+    color: rgb(240, 240, 240);
+}
+
+input[type="button"]:hover {
+    background-color: #3e8e41;
+    cursor: pointer;
+}
+
+input[type="button"]:active {
+    background-color: #327535;
+}
+
+.fraction {
+    display: inline-block;
+    vertical-align: middle;
+    text-align: center;
+}
+
+.fraction>span {
+    display: block;
+}
+
+.fraction span.denominator {
+    border-top: thin solid black;
+}
+
+.fractionsEqual {
+    width: 80%;
+    margin: auto;
+    margin-top: 20px;
+    font-size: 20px;
+    visibility: visible;
 }

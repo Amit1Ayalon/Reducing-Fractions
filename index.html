@@ -10,14 +10,35 @@
 </head>
 
 <body>
-    <h1>Welcome To Fraction Reduction!</h1>
+    <h1 id="ellow">Welcome To Fraction Reduction!</h1>
     <form>
-        <label>Numerator: </label> <br>
-        <input type="text"> <br>
-        <label>Denominator: </label> <br>
-        <input type="text"> <br>
-        <input type="button" value="Calculate!">
+        <div class="inputBlock">
+            <label>Numerator: </label> <br>
+            <input type="text"> <br>
+        </div>
+
+        <div class="inputBlock">
+            <label>Denominator: </label> <br>
+            <input type="text"> <br>
+        </div>
+
+        <input type="button" value="Calculate!" onclick="buttonClicked()">
     </form>
+
+    <div class="fractionsEqual">
+        <div class="fraction">
+            <span class="numerator">Input numerator</span>
+            <span class="denominator">Input denominator</span>
+        </div>
+
+        <span>=</span>
+
+        <div class="fraction">
+            <span class="numerator">Output numerator1</span>
+            <span class="denominator">Output denominator2</span>
+        </div>
+    </div>
+
 
 
     <script src="app.js"></script>
