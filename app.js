@@ -1,5 +1,5 @@
 //setting the inital numerator and denominator
-const initialNumerator = 4;
+const initialNumerator = 6;
 const initialDenominator = 16;
 
 
@@ -18,8 +18,7 @@ function reduceMasterFunction(numerator, denominator) {
         d = fraction[1];
     }
 
-    console.log("numerator: " + n);
-    console.log("denominator: " + d);
+    return [n, d];
 }
 
 
@@ -63,8 +62,29 @@ function FindPrimeMatch(primesList, numToMatch) {
 }
 
 function buttonClicked() {
-    document.getElementsByClassName("fractionsEqual").item(0).style.visibility = "visible";
+    let fractionsBlock = document.getElementsByClassName("fractionsEqual").item(0);
+    const initialNumerator = document.getElementsByTagName("input").item(0).value;
+    const initialDenominator = document.getElementsByTagName("input").item(1).value;
+
+    //this is a regex for 1 or more numbers in one line
+    //the regex avoid numbers that starts with 0 (e.g 03054, 0123)
+    let regex = new RegExp(/^(?!0+)[0-9]+$/);
+
+    if (!regex.test(initialNumerator) || !regex.test(initialDenominator)) {
+        alert("One or more of the strings you entered is not a valid number");
+        document.getElementsByTagName("input").item(0).value = '';
+        document.getElementsByTagName("input").item(1).value = '';
+        fractionsBlock.style.visibility = "hidden";
+        return;
+    }
+    fractionsBlock.getElementsByClassName("fraction").item(0).getElementsByClassName("numerator").item(0).innerHTML = initialNumerator;
+    fractionsBlock.getElementsByClassName("fraction").item(0).getElementsByClassName("denominator").item(0).innerHTML = initialDenominator;
+
+    let calculatedFraction = reduceMasterFunction(initialNumerator, initialDenominator);
+
+    fractionsBlock.getElementsByClassName("fraction").item(1).getElementsByClassName("numerator").item(0).innerHTML = calculatedFraction[0];
+    fractionsBlock.getElementsByClassName("fraction").item(1).getElementsByClassName("denominator").item(0).innerHTML = calculatedFraction[1];
+
+
+    fractionsBlock.style.visibility = "visible";
 }
-
-
-reduceMasterFunction(initialNumerator, initialDenominator);

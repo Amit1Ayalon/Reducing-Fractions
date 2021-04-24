@@ -3,7 +3,7 @@
 }
 
 h1 {
-    color: blue;
+    color: rgb(20, 18, 18);
 }
 
 body {
@@ -34,6 +34,7 @@ input[type="text"] {
     text-align: center;
     width: 70%;
     max-width: 250px;
+    min-width: 100px;
 }
 
 input[type="button"] {
@@ -74,5 +75,5 @@ input[type="button"]:active {
     margin: auto;
     margin-top: 20px;
     font-size: 20px;
-    visibility: visible;
+    visibility: hidden;
 }
