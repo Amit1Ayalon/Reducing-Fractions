@@ -61,7 +61,7 @@ function FindPrimeMatch(primesList, numToMatch) {
     return null
 }
 
-function buttonClicked() {
+function calculateFractionPresent() {
     let fractionsBlock = document.getElementsByClassName("fractionsEqual").item(0);
     const initialNumerator = document.getElementsByTagName("input").item(0).value;
     const initialDenominator = document.getElementsByTagName("input").item(1).value;
@@ -87,4 +87,14 @@ function buttonClicked() {
 
 
     fractionsBlock.style.visibility = "visible";
+}
+
+
+
+function clearFields() {
+    document.getElementsByTagName("input").item(0).value = '';
+    document.getElementsByTagName("input").item(1).value = '';
+
+    document.getElementsByClassName("fractionsEqual").item(0).style.visibility = "hidden";
+
 }

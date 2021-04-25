@@ -60,6 +60,7 @@ input[type="button"]:active {
     display: inline-block;
     vertical-align: middle;
     text-align: center;
+    font-size: 30px;
 }
 
 .fraction>span {
@@ -67,7 +68,7 @@ input[type="button"]:active {
 }
 
 .fraction span.denominator {
-    border-top: thin solid black;
+    border-top: solid black;
 }
 
 .fractionsEqual {
