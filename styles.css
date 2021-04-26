@@ -34,7 +34,7 @@ input[type="text"] {
     text-align: center;
     width: 70%;
     max-width: 250px;
-    min-width: 100px;
+    min-width: 130px;
 }
 
 input[type="button"] {
