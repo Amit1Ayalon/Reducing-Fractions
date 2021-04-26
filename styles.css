@@ -34,7 +34,7 @@ input[type="text"] {
     text-align: center;
     width: 70%;
     max-width: 250px;
-    min-width: 100px;
+    min-width: 150px;
 }
 
 input[type="button"] {
@@ -45,6 +45,10 @@ input[type="button"] {
     background-color: #4CAF50;
     outline: none;
     color: rgb(240, 240, 240);
+    width: 40%;
+    max-width: 170px;
+    min-width: 130px;
+    margin-bottom: 10px;
 }
 
 input[type="button"]:hover {
