@@ -1,8 +1,3 @@
-//setting the inital numerator and denominator
-const initialNumerator = 6;
-const initialDenominator = 16;
-
-
 function reduceMasterFunction(numerator, denominator) {
     let stopReduce = false;
     let n = numerator;
@@ -17,20 +12,16 @@ function reduceMasterFunction(numerator, denominator) {
         n = fraction[0];
         d = fraction[1];
     }
-
     return [n, d];
 }
 
 
 function reduceFraction(n, d) {
-    let primes;
     let commonPrime;
     if (n < d) {
-        primes = findPrimes(n);
-        commonPrime = FindPrimeMatch(primes, d);
+        commonPrime = findCommonPrime(n, d);
     } else {
-        primes = findPrimes(d);
-        commonPrime = FindPrimeMatch(primes, n);
+        commonPrime = findCommonPrime(d, n);
     }
 
     if (commonPrime != null) {
@@ -40,12 +31,13 @@ function reduceFraction(n, d) {
     return [n, d];
 }
 
-function findPrimes(num) {
-    let primesList = [];
+function findCommonPrime(num, numToMatchPrime) {
     for (let i = 1; i <= num; i++) {
-        if (isPrime(i) && num % i === 0) primesList.push(i);
+        if (isPrime(i) && num % i === 0 && isPrimeMatch(i, numToMatchPrime)) {
+            return i;
+        }
     }
-    return primesList;
+    return null;
 }
 
 function isPrime(num) {
@@ -54,14 +46,13 @@ function isPrime(num) {
     return num > 1;
 }
 
-function FindPrimeMatch(primesList, numToMatch) {
-    for (let i = 0; i < primesList.length; i++) {
-        if (numToMatch % primesList[i] === 0) return primesList[i];
-    }
-    return null
+function isPrimeMatch(prime, numToMatchPrime) {
+    if (numToMatchPrime % prime === 0) return true;
+    return false;
 }
 
-function calculateFractionPresent() {
+function calculateFractionAndPresent() {
+    //getting values from the html page
     let fractionsBlock = document.getElementsByClassName("fractionsEqual").item(0);
     const initialNumerator = document.getElementsByTagName("input").item(0).value;
     const initialDenominator = document.getElementsByTagName("input").item(1).value;
@@ -70,31 +61,31 @@ function calculateFractionPresent() {
     //the regex avoid numbers that starts with 0 (e.g 03054, 0123)
     let regex = new RegExp(/^(?!0+)[0-9]+$/);
 
+    //check for valid numbers (natural numbers)
     if (!regex.test(initialNumerator) || !regex.test(initialDenominator)) {
         alert("One or more of the strings you entered is not a valid number");
-        document.getElementsByTagName("input").item(0).value = '';
-        document.getElementsByTagName("input").item(1).value = '';
-        fractionsBlock.style.visibility = "hidden";
+        clearFields();
         return;
     }
+
+    //setting the values the user picked to the page
     fractionsBlock.getElementsByClassName("fraction").item(0).getElementsByClassName("numerator").item(0).innerHTML = initialNumerator;
     fractionsBlock.getElementsByClassName("fraction").item(0).getElementsByClassName("denominator").item(0).innerHTML = initialDenominator;
 
+    //calculating the reduced fraction
     let calculatedFraction = reduceMasterFunction(initialNumerator, initialDenominator);
 
+    //setting the values of the calculated fraction to the page
     fractionsBlock.getElementsByClassName("fraction").item(1).getElementsByClassName("numerator").item(0).innerHTML = calculatedFraction[0];
     fractionsBlock.getElementsByClassName("fraction").item(1).getElementsByClassName("denominator").item(0).innerHTML = calculatedFraction[1];
 
-
+    //setting the fractions to visible
     fractionsBlock.style.visibility = "visible";
 }
-
 
 
 function clearFields() {
     document.getElementsByTagName("input").item(0).value = '';
     document.getElementsByTagName("input").item(1).value = '';
-
     document.getElementsByClassName("fractionsEqual").item(0).style.visibility = "hidden";
-
 }
